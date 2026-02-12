@@ -2,17 +2,15 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, RotateCw, ArrowLeft, ArrowRight, Search, Plus } from 'lucide-react';
 
-// --- IMPORTS DE TES COMPOSANTS ---
-import CinematicAbout from './CinematicAbout';
+// --- IMPORTS DES COMPOSANTS ---
+import About from './About'; // <-- CHANGÉ ICI (On utilise le nouveau fichier About)
 import Contact from './Contact';
-// On importe les nouveaux fichiers que tu vas coder
 import Experiences from './Experiences'; 
 import Projection from './Projection';
 
 const ChromeBrowser = ({ onClose }) => {
   const [activeSection, setActiveSection] = useState('À Propos');
   
-  // Mise à jour des items de navigation selon tes souhaits
   const navItems = [
     { id: 'À Propos', label: 'À Propos' },
     { id: 'Expériences', label: 'Expériences' },
@@ -56,7 +54,7 @@ const ChromeBrowser = ({ onClose }) => {
         </div>
       </div>
 
-      {/* --- NAVIGATION INTERNE DU SITE --- */}
+      {/* --- NAVIGATION INTERNE --- */}
       <nav className="bg-[#0a0a0a] border-b border-white/5 py-4 px-8 flex justify-center md:justify-start gap-8 select-none">
         {navItems.map((item) => (
           <div
@@ -73,14 +71,15 @@ const ChromeBrowser = ({ onClose }) => {
             {activeSection === item.id && (
               <motion.div 
                 layoutId="underline"
-                className="absolute -bottom-1 left-0 w-full h-[2px] bg-blue-500 shadow-[0_0_8px_rgba(59,130,246,0.6)]"
+                // CHANGÉ : La barre sous le menu est maintenant Ambre
+                className="absolute -bottom-1 left-0 w-full h-[2px] bg-[#f59e0b] shadow-[0_0_8px_rgba(245,158,11,0.6)]"
               />
             )}
           </div>
         ))}
       </nav>
 
-      {/* --- ZONE DE CONTENU : APPEL DES FICHIERS --- */}
+      {/* --- ZONE DE CONTENU --- */}
       <div className="flex-1 bg-[#0a0a0a] overflow-y-auto custom-scrollbar">
         <AnimatePresence mode="wait">
           <motion.div
@@ -91,8 +90,8 @@ const ChromeBrowser = ({ onClose }) => {
             transition={{ duration: 0.3 }}
             className="h-full"
           >
-            {/* Ici on appelle tes composants selon la section active */}
-            {activeSection === 'À Propos' && <CinematicAbout />}
+            {/* CHANGÉ : On appelle le nouveau composant <About /> */}
+            {activeSection === 'À Propos' && <About />}
             {activeSection === 'Expériences' && <Experiences />}
             {activeSection === 'Projection' && <Projection />}
             {activeSection === 'Contact' && <Contact />}
