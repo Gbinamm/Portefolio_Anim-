@@ -20,7 +20,7 @@ const Contact = () => {
       <motion.div 
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
-        className="max-w-5xl mx-auto mb-20 text-center" // Centrage ajouté ici
+        className="max-w-5xl mx-auto mb-20 text-center"
       >
         <h1 className="text-7xl font-bold tracking-tight mb-6 text-black">Contact</h1>
         <p className="text-black text-xl font-light max-w-2xl mx-auto italic">
@@ -32,7 +32,7 @@ const Contact = () => {
       <motion.div 
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        className="max-w-5xl mx-auto bg-gray-50 border border-gray-200 rounded-md p-10 md:p-16"
+        className="max-w-5xl mx-auto bg-gray-50 border border-gray-200 rounded-md p-10 md:p-16 shadow-sm"
       >
         <div className="grid md:grid-cols-2 gap-16">
           
@@ -41,18 +41,29 @@ const Contact = () => {
             <div>
               <h2 className="text-2xl font-bold uppercase tracking-tight mb-8 border-b-2 border-black pb-2 text-black text-center md:text-left">Réseaux sociaux</h2>
               <div className="space-y-6">
-                <a href="https://github.com/votre-username" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 group justify-center md:justify-start">
+                <a 
+                  href="https://github.com/Gbinamm" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="flex items-center gap-4 group justify-center md:justify-start"
+                >
                   <div className="p-3 bg-white border border-gray-200 group-hover:bg-black group-hover:text-white transition-all duration-300">
                     <Github size={20} className="text-black group-hover:text-white" />
                   </div>
-                  <span className="text-sm font-bold uppercase tracking-widest text-black">GitHub</span>
+                  <span className="text-sm font-bold uppercase tracking-widest text-black underline decoration-transparent group-hover:decoration-black transition-all">GitHub</span>
                 </a>
 
-                <a href="https://linkedin.com/in/gabin-ammour" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 group justify-center md:justify-start">
+                {/* --- LIEN CORRIGÉ ICI --- */}
+                <a 
+                  href="https://www.linkedin.com/in/gabin-ammour-351a662a3" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="flex items-center gap-4 group justify-center md:justify-start"
+                >
                   <div className="p-3 bg-white border border-gray-200 group-hover:bg-black group-hover:text-white transition-all duration-300">
                     <Linkedin size={20} className="text-black group-hover:text-white" />
                   </div>
-                  <span className="text-sm font-bold uppercase tracking-widest text-black">LinkedIn</span>
+                  <span className="text-sm font-bold uppercase tracking-widest text-black underline decoration-transparent group-hover:decoration-black transition-all">LinkedIn</span>
                 </a>
               </div>
             </div>
@@ -121,7 +132,7 @@ const Contact = () => {
 
       <footer className="mt-24 text-center">
         <p className="text-[10px] text-black font-bold uppercase tracking-[0.3em] opacity-30">
-          Gabin Ammour — Portefolio — 2026
+          Gabin Ammour — Portfolio — 2026
         </p>
       </footer>
     </div>
