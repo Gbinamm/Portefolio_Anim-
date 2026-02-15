@@ -80,7 +80,7 @@ const Experiences = () => {
                   <p className="text-xl font-medium text-black/60">{exp.company}</p>
                 </div>
                 <img 
-                  src="public/icons/orange.png" 
+                  src="/icons/orange.png" 
                   alt="Orange Logo" 
                   className="w-12 h-12 grayscale opacity-30 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500" 
                 />
@@ -130,7 +130,7 @@ const Experiences = () => {
                   <h2 className="text-5xl font-bold leading-tight">{selectedExp.title}</h2>
                   <p className="text-2xl font-medium mt-2">{selectedExp.company}</p>
                 </div>
-                <img src="public/icons/orange.png" alt="Orange" className="w-20 h-20" />
+                <img src="/icons/orange.png" alt="Orange" className="w-20 h-20" />
               </div>
 
               <div className="p-8 md:p-12 space-y-12 text-black">
