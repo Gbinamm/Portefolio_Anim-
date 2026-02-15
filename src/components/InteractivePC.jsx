@@ -6,7 +6,6 @@ const InteractivePC = ({ onEnter }) => {
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-[#050505] perspective-1000">
-      {/* Conteneur 3D du PC */}
       <motion.div
         initial={{ rotateX: 20, rotateY: -20, scale: 0.8, opacity: 0 }}
         animate={{ 
@@ -21,15 +20,13 @@ const InteractivePC = ({ onEnter }) => {
         className="relative preserve-3d cursor-pointer"
         onClick={onEnter}
       >
-        {/* ÉCRAN (L'ÉLÉMENT PRINCIPAL) */}
         <motion.div 
           className="w-[400px] h-[280px] bg-gray-900 border-8 border-gray-800 rounded-t-xl relative overflow-hidden shadow-[0_0_50px_rgba(0,168,255,0.2)]"
           style={{ transform: 'translateZ(20px)' }}
         >
-          {/* Reflet sur l'écran */}
+        
           <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-transparent z-10" />
           
-          {/* Contenu de l'écran (Ton code vert) */}
           <div className="p-4 font-mono text-[10px] text-green-500 leading-tight">
             <p className="animate-pulse"> {'>'} SYSTEM BOOTING...</p>
             <p className="mt-2 text-blue-400"> {'>'} GABIN_AMMOUR_OS v1.0.4</p>
@@ -43,7 +40,7 @@ const InteractivePC = ({ onEnter }) => {
           </div>
         </motion.div>
 
-        {/* CLAVIER / BASE */}
+        
         <div 
           className="w-[420px] h-[300px] bg-gray-800 rounded-b-xl shadow-2xl"
           style={{ 
@@ -51,7 +48,7 @@ const InteractivePC = ({ onEnter }) => {
             background: 'linear-gradient(to bottom, #2d3748, #1a202c)'
           }}
         >
-            {/* Simulation des touches */}
+           
             <div className="grid grid-cols-10 gap-1 p-8 opacity-20">
                 {Array.from({length: 50}).map((_, i) => (
                     <div key={i} className="h-4 bg-white rounded-sm"></div>
@@ -59,11 +56,11 @@ const InteractivePC = ({ onEnter }) => {
             </div>
         </div>
 
-        {/* Ombre portée au sol */}
+ 
         <div className="absolute -bottom-10 left-1/2 -translate-x-1/2 w-[500px] h-[100px] bg-blue-500/10 blur-[60px] rounded-full z-[-1]"></div>
       </motion.div>
 
-      {/* Texte d'instruction */}
+
       <motion.div 
         initial={{ opacity: 0 }}
         animate={{ opacity: 0.5 }}

@@ -15,15 +15,16 @@ const Experiences = () => {
       date: "Septembre 2025 – Aout 2026",
       summary: "Assistance à la création de tableaux de bord et d'outils pour soutenir les managers et les équipes opérationnelles.",
       missions: [
-        "Conception de tableaux de bord décisionnels complexes",
+        "Conception de tableaux de bord décisionnels sur Power BI et optimisation des performances des rapports avec DAX Studio",
         "Modélisation de données pour le pilotage national",
-        "Optimisation des performances des rapports (DAX/SQL)",
-        "Accompagnement au changement pour les utilisateurs finaux"
+        "Développement de systèmes d'emailing et d'envoi de SMS automatisés pilotés par scripts SQL",
+        "Gestion de l'architecture de données sur GCP et développement de scripts d'automatisation en JavaScript"
       ],
-      tools: ["Power BI", "SQL", "DAX", "Python", "Excel"],
+      tools: ["Power BI", "Google Cloud BigQuery", "DAX", "Javascript", "SQL"],
       competencies: [
-        { label: "Analyser", desc: "Étude des besoins métiers et modélisation." },
-        { label: "Valoriser", desc: "Création de visuels interactifs pour l'aide à la décision." }
+        { label: "Analyser", desc: "Cadrage des besoins métiers et modélisation de données complexes pour le pilotage national" },
+        { label: "Traiter", desc: "Administration de bases de données Cloud (GCP) et implémentation de flux transactionnels SQL." },
+      { label: "Développer", desc: "Automatisation de processus et systèmes de notification par scripts JavaScript." }
       ]
     },
     {
@@ -40,7 +41,7 @@ const Experiences = () => {
         "Historisation des points de mutualisation (Looker Studio)",
         "Requêtes via Google BigQuery sur environnement Google Cloud"
       ],
-      tools: ["Power BI", "Looker Studio", "GCP", "SQL", "BigQuery"],
+      tools: ["Power BI", "Looker Studio", "Google Cloud BigQuery", "SQL"],
       competencies: [
         { label: "Traiter", desc: "Manipulation de données avec SQL et nettoyage." },
         { label: "Développer", desc: "Conception de composants décisionnels DAX." }
@@ -51,15 +52,13 @@ const Experiences = () => {
   return (
     <div className="w-full min-h-full bg-white text-black font-sans relative flex flex-col">
       
-      {/* --- TITRE --- */}
       <div className="p-8 md:p-16 pb-0">
         <h1 className="text-7xl font-bold tracking-tight mb-4 text-black uppercase">Expériences</h1>
         <p className="text-black text-xl font-light italic border-l-4 border-black pl-4">
-          Découvrez mon parcours professionnel au sein d'Orange France.
+          Découvrez mon parcours professionnel au sein d'Orange France
         </p>
       </div>
 
-      {/* --- GRILLE : HOVER POUR NETTETÉ / CLIC POUR ZOOM --- */}
       <div className="flex-1 grid grid-cols-1 md:grid-cols-2 gap-0 border-t border-black mt-12">
         {expData.map((exp) => (
           <div 
@@ -69,10 +68,7 @@ const Experiences = () => {
             // 'group' permet de cibler tout le contenu au survol du cadre
             className="group relative cursor-pointer border-b md:border-b-0 md:even:border-l border-black bg-gray-50 overflow-hidden flex flex-col justify-center p-12 transition-colors duration-300 hover:bg-white"
           >
-            {/* EFFET DE FLOU CORRIGÉ : 
-                - blur-md (flou visible) par défaut
-                - group-hover:blur-none (netteté totale) au survol
-            */}
+          
             <div className="transition-all duration-500 blur-md group-hover:blur-none select-none">
               <span className="text-xs font-black uppercase tracking-[0.3em] text-black/40 mb-4 block">
                 {exp.type}
@@ -109,7 +105,6 @@ const Experiences = () => {
         ))}
       </div>
 
-      {/* --- MODAL ZOOM --- */}
       <AnimatePresence>
         {selectedExp && (
           <motion.div 
@@ -155,7 +150,7 @@ const Experiences = () => {
                 <div className="grid md:grid-cols-2 gap-12">
                   <div>
                     <h4 className="text-xl font-bold uppercase mb-6 flex items-center gap-3 border-b-2 border-black pb-2">
-                      <Wrench size={24} /> Outils utilisés
+                      <Wrench size={24} /> Outils et langages  utilisés
                     </h4>
                     <div className="flex flex-wrap gap-2">
                       {selectedExp.tools.map(t => (

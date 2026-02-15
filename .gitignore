@@ -1,24 +1,37 @@
-# Logs
-logs
-*.log
+# Dépendances (trop lourd pour Git)
+node_modules/
+.pnp
+.pnp.js
+
+# Environnement et Sécurité (NE JAMAIS PARTAGER)
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Build et production
+dist/
+build/
+.vercel
+
+# Logs et erreurs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-pnpm-debug.log*
-lerna-debug.log*
 
-node_modules
-dist
-dist-ssr
-*.local
-
-# Editor directories and files
-.vscode/*
-!.vscode/extensions.json
-.idea
+# Fichiers OS et IDE
 .DS_Store
+.vscode/
+.idea/
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
 *.sw?
+
+# Données locales (Migration)
+*.db
+*.sqlite
+data/
+src/supabaseClient.js

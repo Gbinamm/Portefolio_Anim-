@@ -1,11 +1,10 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import BootScreen from './components/BootScreen';
-import LoginScreen from './components/LoginScreen'; // <--- Nouvel import
+import LoginScreen from './components/LoginScreen'; 
 import WindowsDesktop from './components/WindowsDesktop';
 
 function App() {
-  // Le flux est maintenant : booting -> login -> desktop
   const [systemState, setSystemState] = useState('booting');
 
   const handleShutdown = () => {
@@ -15,7 +14,6 @@ function App() {
   return (
     <div className="h-screen w-screen overflow-hidden bg-black">
       <AnimatePresence mode="wait">
-        {/* --- ÉTAT 1 : DÉMARRAGE (Texte vert) --- */}
         {systemState === 'booting' && (
           <motion.div
             key="boot"
@@ -23,12 +21,10 @@ function App() {
             transition={{ duration: 0.5 }}
             className="h-full w-full"
           >
-            {/* Quand c'est fini, on passe au LOGIN */}
             <BootScreen onFinish={() => setSystemState('login')} />
           </motion.div>
         )}
 
-        {/* --- ÉTAT 2 : CONNEXION (Nouveau) --- */}
         {systemState === 'login' && (
           <motion.div
             key="login"
@@ -43,7 +39,6 @@ function App() {
           </motion.div>
         )}
 
-        {/* --- ÉTAT 3 : BUREAU WINDOWS --- */}
         {systemState === 'desktop' && (
           <motion.div
             key="desktop"

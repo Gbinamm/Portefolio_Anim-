@@ -12,23 +12,19 @@ const WindowsDesktop = ({ onShutdown }) => {
 
   useEffect(() => {
     const runSequence = async () => {
-      // 1. Attente initiale
       await new Promise(resolve => setTimeout(resolve, 1500));
 
-      // 2. Déplacement vers l'icône Chrome (coordonnées ajustées pour l'icône)
       await mouseControls.start({
         x: 60,
         y: 80,
         transition: { duration: 1.8, ease: "easeInOut" }
       });
 
-      // 3. Simulation du clic
       await mouseControls.start({
         scale: 0.85,
         transition: { duration: 0.1 }
       });
       
-      // 4. Ouverture de Chrome et disparition du curseur automatique
       setIsChromeOpen(true);
       setShowCursor(false);
     };
@@ -41,7 +37,6 @@ const WindowsDesktop = ({ onShutdown }) => {
       className={`h-full w-full bg-cover bg-center overflow-hidden relative font-sans select-none ${showCursor ? 'cursor-none' : 'cursor-default'}`}
       style={{ backgroundImage: `url(${backgroundUrl})` }}
     >
-      {/* --- CURSEUR WINDOWS NORMAL --- */}
       {showCursor && (
         <motion.div
           animate={mouseControls}
@@ -67,11 +62,9 @@ const WindowsDesktop = ({ onShutdown }) => {
         </motion.div>
       )}
 
-      {/* --- ICÔNE CHROME (Utilise ton image locale chrome.png) --- */}
       <div className="relative z-10 p-8">
         <div className="flex flex-col items-center gap-2 p-4 w-28">
           <div className="w-16 h-16 bg-white/90 rounded-xl flex items-center justify-center shadow-xl border border-white/20">
-            {/* Remplacement du SVG par ton image PNG */}
             <img 
               src="/chrome.png" 
               alt="Google Chrome" 
@@ -84,7 +77,6 @@ const WindowsDesktop = ({ onShutdown }) => {
         </div>
       </div>
 
-      {/* --- BARRE DES TÂCHES --- */}
       <div className="absolute bottom-0 w-full h-14 bg-[#1c1c1c]/90 backdrop-blur-xl border-t border-white/5 flex items-center px-6 justify-between z-[100]">
          <div className="flex items-center gap-4">
             <div className="p-2 text-blue-500">
@@ -94,7 +86,6 @@ const WindowsDesktop = ({ onShutdown }) => {
             </div>
             <div className="h-8 w-[1px] bg-white/10" />
             
-            {/* Icône Chrome dans la barre des tâches */}
             <div className={`p-2 rounded relative ${isChromeOpen ? 'bg-white/5' : ''}`}>
                <img 
                  src="/chrome.png" 

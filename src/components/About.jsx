@@ -5,8 +5,8 @@ import { Code2, Database, Award, X } from "lucide-react";
 const About = () => {
   const [selectedCert, setSelectedCert] = useState(null);
 
-  const languages = ["Python", "SQL", "DAX", "Langage R", "Javascript", "VBA", "HTML", "CSS"];
-  const tools = ["Power BI", "Excel", "Postgres", "Oracle", "MySQL", "Talend", "RStudio"];
+  const languages = ["Python", "SQL", "DAX", "Langage R", "Javascript", "VBA", "HTML", "CSS","SAS"];
+  const tools = ["Power BI", "Excel", "Postgres","BigQuery","Github/gitlab", "Oracle", "MySQL", "Talend", "RStudio", "n8n","Microsoft Defender","Qlik Sense"];
   
   const timeline = [
     {
@@ -80,14 +80,6 @@ const About = () => {
           animate={{ opacity: 1, y: 0 }}
           className="relative z-10 max-w-5xl mx-auto w-full px-8 md:px-16 flex flex-col md:flex-row items-center gap-12"
         >
-          <div className="relative">
-            <div className="w-40 h-40 rounded-full border-2 border-black p-1 bg-white shadow-xl">
-              <div className="w-full h-full rounded-full bg-gray-50 flex items-center justify-center overflow-hidden border border-gray-200">
-                 <span className="text-black italic text-sm font-light">Photo</span>
-              </div>
-            </div>
-          </div>
-
           <div className="text-center md:text-left flex-1">
             <h1 className="text-7xl font-bold tracking-tighter mb-2 text-black">
               Gabin Ammour
@@ -97,9 +89,8 @@ const About = () => {
             </h2>
             
             <p className="text-black text-lg leading-relaxed font-medium max-w-2xl">
-              Actuellement en deuxième année de <span className="font-black border-b-2 border-black">BUT Sciences des Données</span> à l'IUT de Vannes.
-              Passionné par l'analyse de données et la visualisation, je développe mes compétences en statistiques, 
-              programmation et intelligence artificielle.
+              Actuellement en troisième année de <span className="font-black border-b-2 border-black">BUT Sciences des Données</span> à l'IUT de Vannes.
+              Je concentre mes travaux sur l'analyse et la visualisation de données, en approfondissant quotidiennement mes compétences en statistiques, programmation, cybersécurité et intelligence artificielle.
             </p>
           </div>
         </motion.div>

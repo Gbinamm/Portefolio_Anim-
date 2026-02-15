@@ -2,17 +2,14 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, RotateCw, ArrowLeft, ArrowRight, Search, Plus } from 'lucide-react';
 
-// --- IMPORTS ---
 import About from './About';
-import Projets from './Projets'; // Référence au nouveau fichier
+import Projets from './Projets'; 
 import Experiences from './Experiences'; 
 import Contact from './Contact';
 
 const ChromeBrowser = ({ onClose }) => {
-  // Par défaut sur 'À Propos'
   const [activeSection, setActiveSection] = useState('À Propos');
   
-  // Ordre modifié : Projets avant Expériences
   const navItems = [
     { id: 'À Propos', label: 'À Propos' },
     { id: 'Projets', label: 'Projets' },
@@ -27,7 +24,6 @@ const ChromeBrowser = ({ onClose }) => {
       exit={{ opacity: 0, scale: 0.9, y: 20 }}
       className="fixed inset-4 md:inset-10 z-[200] bg-[#202124] rounded-lg shadow-2xl border border-white/10 flex flex-col overflow-hidden font-sans"
     >
-      {/* --- BARRE D'ONGLET --- */}
       <div className="bg-[#202124] p-2 flex items-center gap-2 select-none">
         <div className="flex gap-2 px-2 mr-4">
           <div onClick={onClose} className="w-3 h-3 rounded-full bg-[#ff5f56] cursor-pointer" />
@@ -40,7 +36,6 @@ const ChromeBrowser = ({ onClose }) => {
         </div>
       </div>
 
-      {/* --- BARRE D'ADRESSE --- */}
       <div className="bg-[#35363a] p-2 flex items-center gap-3 border-b border-black/20">
         <div className="flex-1 bg-[#202124] rounded-full px-4 py-1.5 flex items-center gap-2 text-xs text-gray-300">
           <Search size={14} className="text-gray-500" />
@@ -49,7 +44,7 @@ const ChromeBrowser = ({ onClose }) => {
         </div>
       </div>
 
-      {/* --- NAVIGATION (Design Noir sur Blanc) --- */}
+      
       <nav className="bg-white border-b border-gray-200 py-4 px-8 flex gap-8 select-none">
         {navItems.map((item) => (
           <div
@@ -67,7 +62,6 @@ const ChromeBrowser = ({ onClose }) => {
         ))}
       </nav>
 
-      {/* --- ZONE DE CONTENU --- */}
       <div className="flex-1 bg-white overflow-y-auto custom-scrollbar">
         <AnimatePresence mode="wait">
           <motion.div

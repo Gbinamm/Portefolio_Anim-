@@ -14,7 +14,6 @@ const LoginScreen = ({ onLogin }) => {
     let uIdx = 0;
     let pIdx = 0;
 
-    // Un seul intervalle gère tout pour éviter les doublons
     const timer = setInterval(() => {
       if (uIdx <= targetUsername.length) {
         setUsername(targetUsername.slice(0, uIdx));
@@ -31,13 +30,11 @@ const LoginScreen = ({ onLogin }) => {
       }
     }, 70);
 
-    return () => clearInterval(timer); // Sécurité pour arrêter le chrono
+    return () => clearInterval(timer); 
   }, [onLogin]);
 
-  // ATTENTION : C'est bien "return" et non "retour"
   return (
     <div className="h-screen w-screen bg-[url('https://images.hdqwalls.com/download/windows-10-blue-stock-4k-mm-3840x2160.jpg')] bg-cover bg-center flex flex-col items-center justify-center text-white font-sans relative overflow-hidden">
-      {/* Overlay pour l'effet de flou Windows */}
       <div className="absolute inset-0 bg-black/30 backdrop-blur-[5px] z-0"></div>
 
       <div className="relative z-10 flex flex-col items-center">
