@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 
-const BootScreen = ({ onFinish }) => {
+const BootScreen = ({ onFinish, onSkip }) => {
   const [lines, setLines] = useState([]);
 
   const bootSequence = [
@@ -15,36 +15,57 @@ const BootScreen = ({ onFinish }) => {
     "> START GABIN AMMOUR PORTEFOLIO..."
   ];
 
-useEffect(() => {
-  let charIndex = 0;
-  let lineIndex = 0;
+  useEffect(() => {
+    let charIndex = 0;
+    let lineIndex = 0;
 
-  // On stocke les intervals dans des variables pour pouvoir les couper
-  const titleInterval = setInterval(() => {
-    // Utiliser la version "slice" basée sur l'index local est plus sûr
-    setCenteredText(fullTitle.slice(0, charIndex));
-    charIndex++;
-    if (charIndex > fullTitle.length) clearInterval(titleInterval);
-  }, 80);
+    const handleKeyDown = (e) => {
+      if (e.key === ' ' || e.key === 'Enter') {
+        onSkip();
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
 
-  const logsInterval = setInterval(() => {
-    if (lineIndex < bootSequence.length) {
-      setLines((prev) => [...prev, bootSequence[lineIndex]]);
-      lineIndex++;
-    } else {
+    const titleInterval = setInterval(() => {
+      if (typeof setCenteredText === 'function') {
+        setCenteredText(fullTitle.slice(0, charIndex));
+      }
+      charIndex++;
+      if (typeof fullTitle !== 'undefined' && charIndex > fullTitle.length) clearInterval(titleInterval);
+    }, 80);
+
+    const logsInterval = setInterval(() => {
+      if (lineIndex < bootSequence.length) {
+        setLines((prev) => [...prev, bootSequence[lineIndex]]);
+        lineIndex++;
+      } else {
+        clearInterval(logsInterval);
+        setTimeout(onFinish, 1000);
+      }
+    }, 400);
+
+    return () => {
+      clearInterval(titleInterval);
       clearInterval(logsInterval);
-      setTimeout(onFinish, 1000);
-    }
-  }, 400);
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [onFinish, onSkip]);
 
-  // NETTOYAGE : Si on quitte l'écran, on arrête les chronos
-  return () => {
-    clearInterval(titleInterval);
-    clearInterval(logsInterval);
-  };
-}, []);
   return (
-    <div className="h-screen w-screen bg-black text-green-500 p-8 md:p-20 font-mono text-sm md:text-xl overflow-hidden relative crt cursor-none">
+    /* J'ai changé cursor-none en cursor-default ici */
+    <div className="h-screen w-screen bg-black text-green-500 p-8 md:p-20 font-mono text-sm md:text-xl overflow-hidden relative crt cursor-default">
+      
+      <button 
+        onClick={onSkip}
+        className="absolute bottom-10 right-10 z-50 px-4 py-2 border border-green-500 text-green-500 hover:bg-green-500 hover:text-black transition-all duration-300 text-xs md:text-sm uppercase tracking-widest opacity-60 hover:opacity-100"
+        style={{ 
+          pointerEvents: 'auto', 
+          cursor: 'pointer' 
+        }}
+      >
+        [ Passer (Espace) ]
+      </button>
+
       <div className="relative z-10 h-full flex flex-col justify-end">
         <div>
           {lines.map((line, index) => (

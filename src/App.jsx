@@ -21,7 +21,10 @@ function App() {
             transition={{ duration: 0.5 }}
             className="h-full w-full"
           >
-            <BootScreen onFinish={() => setSystemState('login')} />
+            <BootScreen 
+              onFinish={() => setSystemState('login')} 
+              onSkip={() => setSystemState('desktop')} 
+            />
           </motion.div>
         )}
 
@@ -34,7 +37,6 @@ function App() {
             transition={{ duration: 1, ease: "easeInOut" }}
             className="h-full w-full"
           >
-            {/* Quand la connexion est faite, on passe au DESKTOP */}
             <LoginScreen onLogin={() => setSystemState('desktop')} />
           </motion.div>
         )}
